@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body { margin:0; background:#ffffff; font-family:"Open Sans",Arial,sans-serif; color:#444; }
+    a { text-decoration:none; }
+
+    @media (max-width: 600px) {
+
+      [style*="gap: 26px"] > * { display: none !important; }
+      [style*="gap: 26px"]::after { content: "\2630"; font-size: 30px; color: #555; line-height: 1; }
+
+      [style*="padding: 7px 0"] { white-space: nowrap !important; overflow: hidden !important; }
+
+      [style*="max-width: 1180px"], [style*="max-width: 1000px"] { padding-left: 6px !important; padding-right: 6px !important; }
+
+      [style*="repeat(4, 1fr)"], [style*="repeat(3, 1fr)"] { gap: 5px !important; }
+
+      [style*="repeat(6, 1fr)"] { gap: 2px !important; }
+
+      a[style*="border: 1px solid rgb(111, 162, 146)"] { padding: 5px 6px !important; font-size: 9px !important; letter-spacing: .5px !important; }
+    }
+  </style>
+</helmet>
+<div style="width:100%;background:#fff;">
+
+  <div style="background:#6fa292;color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:.5px;text-align:center;padding:7px 0;">
+    FREE UK delivery on orders over £25 &nbsp;&bull;&nbsp; Handmade fresh in Bristol &nbsp;&bull;&nbsp; Order by 2pm for same-day dispatch
+  </div>
+
+  <div style="max-width:1180px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;">
+    <div style="font-family:'Dancing Script',cursive;font-size:42px;color:#6fa292;line-height:1;">Smush</div>
+    <div style="display:flex;align-items:center;gap:26px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#555;">
+      <a href="index.html" style="color:#555;">Home</a>
+      <a href="Smush%20Shop%20v2.dc.html" style="color:#555;">Shop</a>
+      <a href="Smush%20About%20v2.dc.html" style="color:#555;">About</a>
+      <a href="Smush%20Contact%20v2.dc.html" style="color:#555;">Contact</a>
+      <span style="color:#bbb;font-size:16px;">&#9906;</span>
+      <a href="Smush%20Cart%20v2.dc.html" style="color:#6fa292;font-size:16px;position:relative;">&#128722;<span style="position:absolute;top:-6px;right:-9px;background:#e08a7a;color:#fff;font-size:9px;font-weight:700;border-radius:50%;width:14px;height:14px;display:flex;align-items:center;justify-content:center;">7</span></a>
+    </div>
+  </div>
+
+  <div style="max-width:1180px;margin:0 auto;padding:26px 24px 6px;">
+    <h1 style="font-family:'Montserrat',sans-serif;font-size:28px;font-weight:700;color:#3f4a45;margin:0;">Your Basket</h1>
+  </div>
+
+  <div style="max-width:1180px;margin:0 auto;padding:14px 24px 50px;display:flex;gap:40px;align-items:flex-start;">
+
+    <div style="flex:1;">
+
+      <div style="display:grid;grid-template-columns:1fr 110px 130px 90px;gap:12px;padding:0 0 12px;border-bottom:2px solid #ededed;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#999;">
+        <div>Product</div>
+        <div style="text-align:center;">Price</div>
+        <div style="text-align:center;">Quantity</div>
+        <div style="text-align:right;">Total</div>
+      </div>
+
+      <sc-for list="{{ items }}" as="it" hint-placeholder-count="4">
+        <div style="display:grid;grid-template-columns:1fr 110px 130px 90px;gap:12px;align-items:center;padding:18px 0;border-bottom:1px solid #eee;">
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div style="position:relative;width:72px;height:72px;flex:0 0 72px;background:{{ it.imgBg }};border:1px solid #ededed;border-radius:3px;overflow:hidden;display:flex;align-items:center;justify-content:center;font-family:'Courier New',monospace;font-size:8px;color:#6b6b6b;">
+              <sc-if value="{{ it.img }}" hint-placeholder-val="{{ false }}">
+                <img src="{{ it.img }}" alt="{{ it.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+              </sc-if>
+              <sc-if value="{{ it.noImg }}" hint-placeholder-val="{{ true }}">{{ it.imgLabel }}</sc-if>
+            </div>
+            <div>
+              <div style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;color:#3f4a45;">{{ it.name }}</div>
+              <div style="font-family:'Open Sans',sans-serif;font-size:12px;color:#999;margin-top:3px;">{{ it.variant }}</div>
+              <a href="#" style="font-family:'Open Sans',sans-serif;font-size:12px;color:#b0746a;">Remove</a>
+            </div>
+          </div>
+          <div style="text-align:center;font-family:'Open Sans',sans-serif;font-size:14px;color:#666;">{{ it.price }}</div>
+          <div style="display:flex;justify-content:center;">
+            <div style="display:flex;align-items:center;border:1px solid #ddd;border-radius:2px;">
+              <span style="padding:0 10px;font-size:15px;color:#999;line-height:34px;">&minus;</span>
+              <input type="text" value="{{ it.qty }}" style="width:34px;height:34px;text-align:center;border:0;border-left:1px solid #ddd;border-right:1px solid #ddd;font-family:'Open Sans',sans-serif;font-size:13px;color:#444;" />
+              <span style="padding:0 10px;font-size:14px;color:#999;line-height:34px;">+</span>
+            </div>
+          </div>
+          <div style="text-align:right;font-family:'Open Sans',sans-serif;font-size:14px;font-weight:600;color:#3f4a45;">{{ it.total }}</div>
+        </div>
+      </sc-for>
+
+      <div style="display:flex;justify-content:space-between;margin-top:22px;">
+        <a href="Smush%20Shop%20v2.dc.html" style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#555;border:1px solid #ccc;padding:11px 24px;border-radius:2px;">&lsaquo; Continue Shopping</a>
+        <a href="#" style="font-family:'Open Sans',sans-serif;font-size:13px;color:#999;align-self:center;">Update Basket</a>
+      </div>
+
+      <div style="margin-top:30px;">
+        <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#777;margin-bottom:8px;">Add a Note to Your Order</div>
+        <textarea placeholder="Special instructions, gift message, etc." style="width:100%;max-width:440px;height:74px;border:1px solid #ddd;border-radius:2px;padding:10px 12px;font-family:'Open Sans',sans-serif;font-size:13px;color:#444;box-sizing:border-box;resize:none;"></textarea>
+      </div>
+    </div>
+
+    <div style="flex:0 0 320px;">
+      <div style="border:1px solid #ededed;border-radius:3px;padding:24px;box-shadow:0 1px 3px rgba(0,0,0,.05);">
+        <div style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#3f4a45;margin-bottom:18px;">Order Summary</div>
+
+        <div style="display:flex;justify-content:space-between;font-family:'Open Sans',sans-serif;font-size:14px;color:#666;margin-bottom:12px;">
+          <span>Subtotal</span><span style="color:#3f4a45;font-weight:600;">£22.99</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-family:'Open Sans',sans-serif;font-size:14px;color:#666;margin-bottom:12px;">
+          <span>Delivery</span><span style="color:#6fa292;font-weight:600;">FREE</span>
+        </div>
+
+        <div style="background:#f3f8f5;border:1px dashed #bfd8cd;border-radius:2px;padding:9px 12px;font-family:'Open Sans',sans-serif;font-size:12px;color:#6fa292;margin-bottom:16px;">
+          You're only £2.01 away from free UK delivery!
+        </div>
+
+        <div style="border-top:1px solid #eee;padding-top:14px;display:flex;justify-content:space-between;align-items:baseline;font-family:'Montserrat',sans-serif;color:#3f4a45;">
+          <span style="font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Total</span>
+          <span style="font-size:22px;font-weight:700;">£22.99</span>
+        </div>
+        <div style="font-family:'Open Sans',sans-serif;font-size:11px;color:#aaa;text-align:right;margin-top:4px;">Taxes included where applicable</div>
+
+        <a href="Smush%20Checkout%20v2.dc.html" style="display:block;text-align:center;margin-top:18px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#fff;background:#6fa292;padding:14px 0;border-radius:2px;">Proceed to Checkout</a>
+
+        <div style="margin-top:18px;">
+          <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#999;margin-bottom:8px;">Discount Code</div>
+          <div style="display:flex;gap:0;">
+            <input type="text" placeholder="Enter code" style="flex:1;border:1px solid #ddd;border-right:0;border-radius:2px 0 0 2px;padding:10px 12px;font-family:'Open Sans',sans-serif;font-size:13px;color:#444;" />
+            <a href="#" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#fff;background:#3f4a45;padding:11px 16px;border-radius:0 2px 2px 0;">Apply</a>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;display:flex;align-items:center;gap:8px;font-family:'Open Sans',sans-serif;font-size:11px;color:#aaa;">
+          <span>&#128274;</span> Secure checkout &mdash; VISA &nbsp; MC &nbsp; PayPal
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#3f4a45;color:#b7c2bc;padding:46px 24px 24px;">
+    <div style="max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;">
+      <div style="max-width:260px;">
+        <div style="font-family:'Dancing Script',cursive;font-size:30px;color:#fff;margin-bottom:10px;">Smush</div>
+        <div style="font-family:'Open Sans',sans-serif;font-size:13px;line-height:1.7;color:#9aa8a1;">Handmade soaps &amp; cosmetics, made fresh in small batches in Bristol.</div>
+      </div>
+      <div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#fff;margin-bottom:14px;">Shop</div>
+        <div style="font-family:'Open Sans',sans-serif;font-size:13px;line-height:2.1;"><a href="#" style="color:#9aa8a1;">Soap Bars</a><br><a href="#" style="color:#9aa8a1;">Bath Bombs</a><br><a href="#" style="color:#9aa8a1;">Shampoo Bars</a><br><a href="#" style="color:#9aa8a1;">Skincare</a></div>
+      </div>
+      <div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#fff;margin-bottom:14px;">Information</div>
+        <div style="font-family:'Open Sans',sans-serif;font-size:13px;line-height:2.1;"><a href="#" style="color:#9aa8a1;">About Us</a><br><a href="#" style="color:#9aa8a1;">Delivery Info</a><br><a href="#" style="color:#9aa8a1;">Returns Policy</a><br><a href="#" style="color:#9aa8a1;">Terms &amp; Conditions</a></div>
+      </div>
+      <div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#fff;margin-bottom:14px;">Contact</div>
+        <div style="font-family:'Open Sans',sans-serif;font-size:13px;line-height:1.9;color:#9aa8a1;">Unit 4b, Riverside Workshops<br>Bristol BS3<br>sales@smushsoaps.co.uk<br>0117 496 0021</div>
+        <div style="margin-top:12px;display:flex;gap:10px;font-size:16px;color:#fff;"><span>f</span><span>&#9737;</span><span>&#9993;</span></div>
+      </div>
+    </div>
+    <div style="max-width:1180px;margin:26px auto 0;padding-top:16px;border-top:1px solid #4e5a54;display:flex;justify-content:space-between;font-family:'Open Sans',sans-serif;font-size:12px;color:#7f8d87;">
+      <span>&copy; 2018 Smush Soaps Ltd. All rights reserved.</span>
+      <span>VISA &nbsp; MC &nbsp; PayPal &nbsp; Maestro</span>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:1400}}">
+class Component extends DCLogic {
+  renderVals() {
+    const items = [
+      { name:"Lavender Dream Soap Bar", variant:"Lavender / 100g", price:"£3.50", qty:"2", total:"£7.00", img:"images/lavender-dream.png", imgBg:"#b9a6d6", imgLabel:"soap_01.jpg" },
+      { name:"Rose Petal Bath Bomb", variant:"Single", price:"2.99", qty:"1", total:"2.99", img:"images/rose-petal.png", imgBg:"#e3a8bd", imgLabel:"bomb_03.jpg" },
+      { name:"Oatmeal & Honey Soap", variant:"100g bar", price:"£3", qty:"3", total:"£9", img:null, noImg:true, imgBg:"#dcc8a0", imgLabel:"soap_04.jpg" },
+      { name:"Charcoal Face Soap", variant:"100g bar", price:"4", qty:"1", total:"4", img:null, noImg:true, imgBg:"#9a9aa2", imgLabel:"soap_08.jpg" },
+    ];
+    return { items };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body { margin:0; background:#ffffff; font-family:"Open Sans",Arial,sans-serif; color:#444; }
+    a { text-decoration:none; }
+
+    @media (max-width: 600px) {
+
+      [style*="gap: 26px"] > * { display: none !important; }
+      [style*="gap: 26px"]::after { content: "\2630"; font-size: 30px; color: #555; line-height: 1; }
+
+      [style*="padding: 7px 0"] { white-space: nowrap !important; overflow: hidden !important; }
+
+      [style*="max-width: 1180px"], [style*="max-width: 1000px"] { padding-left: 6px !important; padding-right: 6px !important; }
+
+      [style*="repeat(4, 1fr)"], [style*="repeat(3, 1fr)"] { gap: 5px !important; }
+
+      [style*="repeat(6, 1fr)"] { gap: 2px !important; }
+
+      a[style*="border: 1px solid rgb(111, 162, 146)"] { padding: 5px 6px !important; font-size: 9px !important; letter-spacing: .5px !important; }
+    }
+  </style>
+</helmet>
+<div style="width:100%;background:#fff;">
+
+  <div style="background:#6fa292;color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:.5px;text-align:center;padding:7px 0;">
+    FREE UK delivery on orders over £25 &nbsp;&bull;&nbsp; Handmade fresh in Bristol &nbsp;&bull;&nbsp; Order by 2pm for same-day dispatch
+  </div>
+
+  <div style="max-width:1180px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;">
+    <div style="font-family:'Dancing Script',cursive;font-size:42px;color:#6fa292;line-height:1;">Smush</div>
+    <div style="display:flex;align-items:center;gap:26px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#555;">
+      <a href="index.html" style="color:#555;">Home</a>
+      <a href="Smush%20Shop%20v2.dc.html" style="color:#555;">Shop</a>
+      <a href="Smush%20About%20v2.dc.html" style="color:#6fa292;">About</a>
+      <a href="Smush%20Contact%20v2.dc.html" style="color:#555;">Contact</a>
+      <span style="color:#bbb;font-size:16px;">&#9906;</span>
+      <a href="Smush%20Cart%20v2.dc.html" style="color:#555;font-size:16px;position:relative;">&#128722;<span style="position:absolute;top:-6px;right:-9px;background:#e08a7a;color:#fff;font-size:9px;font-weight:700;border-radius:50%;width:14px;height:14px;display:flex;align-items:center;justify-content:center;">0</span></a>
+    </div>
+  </div>
+
+  <div style="position:relative;height:260px;background:#efe9e1;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;">
+    <img src="images/gift-box-open.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%;" />
+    <div style="position:relative;background:rgba(255,255,255,.72);padding:22px 44px;">
+      <div style="font-family:'Montserrat',sans-serif;font-size:32px;font-weight:700;color:#3f4a45;">Our Story</div>
+      <div style="font-family:'Open Sans',sans-serif;font-size:14px;color:#5a635e;margin-top:6px;">Handmade in Bristol since 2014</div>
+    </div>
+  </div>
+
+  <div style="max-width:1180px;margin:0 auto;padding:50px 24px;display:flex;gap:50px;align-items:center;">
+    <div style="flex:1;">
+      <div style="font-family:'Montserrat',sans-serif;font-size:24px;font-weight:700;color:#3f4a45;margin-bottom:14px;">It started on a market stall</div>
+      <div style="font-family:'Open Sans',sans-serif;font-size:14px;line-height:1.8;color:#555;">
+        <p style="margin:0 0 14px;">Smush began in 2014 with a single fold-out table at St Nicholas Market, a stack of hand-cut soap bars and a hand-painted sign. People kept coming back &mdash; for the smell, for the chat, and for soap that felt nothing like the supermarket stuff.</p>
+        <p style="margin:0 0 14px;">Today we make everything by hand in small batches in our Bristol workshop. We&rsquo;ve grown to three little high-street shops, but the way we make things hasn&rsquo;t changed: simple ingredients, no plastic, nothing tested on animals, and a friendly face behind the counter.</p>
+        <p style="margin:0;">We&rsquo;re still a small team that knows its regulars by name &mdash; and we&rsquo;d like to bring a bit of that to everyone, wherever you are.</p>
+      </div>
+    </div>
+    <div style="flex:0 0 440px;">
+      <div style="width:440px;height:300px;background:#efe9e1;border:1px solid #ededed;border-radius:3px;overflow:hidden;">
+        <img src="images/smush-box.png" alt="Smush soaps" style="width:100%;height:100%;object-fit:cover;display:block;" />
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#f7f5f1;border-top:1px solid #eee;border-bottom:1px solid #eee;">
+    <div style="max-width:1180px;margin:0 auto;padding:46px 24px;display:flex;justify-content:space-between;gap:30px;text-align:center;">
+      <sc-for list="{{ values }}" as="v" hint-placeholder-count="4">
+        <div style="flex:1;">
+          <div style="width:52px;height:52px;border:2px solid #6fa292;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;color:#6fa292;font-size:22px;">{{ v.icon }}</div>
+          <div style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#444;margin-bottom:6px;">{{ v.title }}</div>
+          <div style="font-family:'Open Sans',sans-serif;font-size:13px;color:#888;line-height:1.5;">{{ v.text }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="max-width:1180px;margin:0 auto;padding:50px 24px;display:flex;gap:50px;align-items:center;">
+    <div style="flex:0 0 300px;">
+      <div style="width:300px;height:340px;background:#d8c8a8;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.35) 0,rgba(255,255,255,.35) 7px,rgba(255,255,255,.12) 7px,rgba(255,255,255,.12) 14px);border:1px solid #ededed;border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'Courier New',monospace;font-size:11px;color:#6b6b6b;">founder.jpg</div>
+    </div>
+    <div style="flex:1;">
+      <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#e08a7a;margin-bottom:10px;">Meet the Founder</div>
+      <div style="font-family:'Dancing Script',cursive;font-size:34px;color:#3f4a45;margin-bottom:10px;">&ldquo;We just wanted to make soap we&rsquo;d actually want to use.&rdquo;</div>
+      <div style="font-family:'Open Sans',sans-serif;font-size:14px;line-height:1.8;color:#555;">
+        <p style="margin:0 0 12px;">Smush is run by Rosie and a small team of makers. Rosie started mixing soap in her kitchen, selling to friends, then to the market, then &mdash; somehow &mdash; to three shops across Bristol and Bath.</p>
+        <p style="margin:0;">Every bar is still cut, cured and wrapped by hand. Nothing leaves the workshop that we wouldn&rsquo;t put on our own skin.</p>
+      </div>
+      <div style="font-family:'Open Sans',sans-serif;font-size:13px;color:#999;margin-top:16px;">&mdash; Rosie, Founder</div>
+    </div>
+  </div>
+
+  <div style="background:#3f4a45;color:#fff;">
+    <div style="max-width:1180px;margin:0 auto;padding:46px 24px;text-align:center;">
+      <div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:700;letter-spacing:1px;margin-bottom:6px;">Come Say Hello</div>
+      <div style="font-family:'Open Sans',sans-serif;font-size:14px;color:#b7c2bc;margin-bottom:30px;">Find us in three little shops &mdash; plus the occasional market stall.</div>
+      <div style="display:flex;justify-content:space-between;gap:30px;">
+        <sc-for list="{{ shops }}" as="s" hint-placeholder-count="3">
+          <div style="flex:1;border:1px solid #4e5a54;border-radius:3px;padding:22px;">
+            <div style="font-family:'Dancing Script',cursive;font-size:24px;color:#fff;margin-bottom:8px;">{{ s.name }}</div>
+            <div style="font-family:'Open Sans',sans-serif;font-size:13px;line-height:1.7;color:#b7c2bc;">{{ s.addr }}</div>
+            <div style="font-family:'Open Sans',sans-serif;font-size:12px;color:#8fa399;margin-top:8px;">{{ s.hours }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#6fa292;padding:46px 24px;text-align:center;">
+    <div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:700;color:#fff;letter-spacing:1px;">Join Our Newsletter</div>
+    <div style="font-family:'Open Sans',sans-serif;font-size:14px;color:#dff0ea;margin:8px 0 20px;">Be the first to hear about new batches &amp; offers</div>
+    <div style="display:flex;justify-content:center;gap:0;">
+      <input type="text" placeholder="Enter your email address" style="font-family:'Open Sans',sans-serif;font-size:14px;padding:12px 16px;border:0;width:300px;border-radius:2px 0 0 2px;" />
+      <a href="#" style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#6fa292;background:#fff;padding:12px 26px;border-radius:0 2px 2px 0;border-left:1px solid #e3e3e3;">Subscribe</a>
+    </div>
+  </div>
+
+  <div style="background:#3f4a45;color:#b7c2bc;padding:46px 24px 24px;">
+    <div style="max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;">
+      <div style="max-width:260px;">
+        <div style="font-family:'Dancing Script',cursive;font-size:30px;color:#fff;margin-bottom:10px;">Smush</div>
+        <div style="font-family:'Open Sans',sans-serif;font-size:13px;line-height:1.7;color:#9aa8a1;">Handmade soaps &amp; cosmetics, made fresh in small batches in Bristol.</div>
+      </div>
+      <div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#fff;margin-bottom:14px;">Shop</div>
+        <div style="font-family:'Open Sans',sans-serif;font-size:13px;line-height:2.1;"><a href="#" style="color:#9aa8a1;">Soap Bars</a><br><a href="#" style="color:#9aa8a1;">Bath Bombs</a><br><a href="#" style="color:#9aa8a1;">Shampoo Bars</a><br><a href="#" style="color:#9aa8a1;">Skincare</a></div>
+      </div>
+      <div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#fff;margin-bottom:14px;">Information</div>
+        <div style="font-family:'Open Sans',sans-serif;font-size:13px;line-height:2.1;"><a href="#" style="color:#9aa8a1;">About Us</a><br><a href="#" style="color:#9aa8a1;">Delivery Info</a><br><a href="#" style="color:#9aa8a1;">Returns Policy</a><br><a href="#" style="color:#9aa8a1;">Terms &amp; Conditions</a></div>
+      </div>
+      <div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#fff;margin-bottom:14px;">Contact</div>
+        <div style="font-family:'Open Sans',sans-serif;font-size:13px;line-height:1.9;color:#9aa8a1;">Unit 4b, Riverside Workshops<br>Bristol BS3<br>sales@smushsoaps.co.uk<br>0117 496 0021</div>
+        <div style="margin-top:12px;display:flex;gap:10px;font-size:16px;color:#fff;"><span>f</span><span>&#9737;</span><span>&#9993;</span></div>
+      </div>
+    </div>
+    <div style="max-width:1180px;margin:26px auto 0;padding-top:16px;border-top:1px solid #4e5a54;display:flex;justify-content:space-between;font-family:'Open Sans',sans-serif;font-size:12px;color:#7f8d87;">
+      <span>&copy; 2018 Smush Soaps Ltd. All rights reserved.</span>
+      <span>VISA &nbsp; MC &nbsp; PayPal &nbsp; Maestro</span>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:2100}}">
+class Component extends DCLogic {
+  renderVals() {
+    const values = [
+      { icon:"✓", title:"Handmade", text:"Cut, cured & wrapped by hand in Bristol." },
+      { icon:"❀", title:"Natural", text:"Simple, kind ingredients — no nasties." },
+      { icon:"♡", title:"Cruelty-Free", text:"Never tested on animals. Ever." },
+      { icon:"⚑", title:"Plastic-Free", text:"Sold loose or wrapped in paper, not plastic." },
+    ];
+    const shops = [
+      { name:"Gloucester Road", addr:"142 Gloucester Road<br>Bishopston, Bristol BS7", hours:"Mon–Sat 9–5:30" },
+      { name:"Clifton", addr:"8 The Mall<br>Clifton, Bristol BS8", hours:"Mon–Sat 10–6" },
+      { name:"Bath", addr:"21 Milsom Place<br>Bath BA1", hours:"Tue–Sun 10–5" },
+    ];
+    return { values, shops };
+  }
+}
+</script>
+</body>
+</html>
